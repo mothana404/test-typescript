@@ -1,44 +1,42 @@
 import { Model, Sequelize, DataTypes } from 'sequelize';
 
-export default class Student extends Model {
+class Student extends Model {
   public id?: number;
   public name!: string;
-  public birthdate?: Date;
-  public country?: string;
-};
+  public age?: number;
+  public major?: string;
+  public average?: number;
+}
 
 export const StudentMap = (sequelize: Sequelize) => {
-    Student.init({
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING
-        },
-        age : {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        major: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        average: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        }
-    }, {
-        sequelize,
-        tableName: 'Students',
-        timestamps: true
-});
-    (async () => {
-        await Student.sync();
-        console.log('Student table synced successfully');
-    })();
+  Student.init({
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    name: {
+      type: DataTypes.STRING(255)
+    },
+    age: {
+      type: DataTypes.INTEGER
+    },
+    major: {
+      type: DataTypes.STRING(100)
+    },
+    average: {
+      type: DataTypes.FLOAT
+    }
+  }, {
+    sequelize,
+    tableName: 'students',
+    timestamps: false
+  });
+
+  return Student; // Return the initialized model
 };
+
+export default Student;
 
 
 // import { Model, Sequelize, DataTypes } from 'sequelize';

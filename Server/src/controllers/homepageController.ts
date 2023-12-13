@@ -8,9 +8,11 @@ async function sayHello(req: Request, res: Response){
 async function AddSudents(req: Request, res: Response){
     try{
         const {name, age, major, average} = req.body;
-        const createStudent = await Student.create({name, age, major, average});
-        res.status(201).json(createStudent);
+        console.log(name, age, major, average);
+        const createStudent = await Student.create({name,age,major,average});
+        res.status(201).json("createStudent");
     }catch(error){
+        console.log(error)
         res.status(500).json('error in AddSudents Controller');
     }
 };

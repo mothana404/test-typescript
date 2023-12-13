@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import homepageController from '../controllers/homepageController';
 
 router.get('/getHelloToTypeScript', homepageController.sayHello);
-router.get('/addSudents', homepageController.AddSudents);
+router.post('/addSudents', homepageController.AddSudents);
 router.get('/getAllSudents', homepageController.getAllSudents);
 router.get('/getStudentById/:id', homepageController.getStudentById);
 
